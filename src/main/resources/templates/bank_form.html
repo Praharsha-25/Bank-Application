@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bank Application</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></head>
+<style>
+    input[type=text]{
+        border-width: 2px;
+    }
+    input[type=number]{
+        border-width: 2px;
+    }
+    input[type=file]{
+        border-width: 2px;
+    }
+</style>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark container-fluid mt-3">
+    <a class="navbar-brand ms-3 col-1 " href="#">Bank</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav col-11 text-center">
+        <li class="nav-item col">
+            <a th:href="@{/bank}" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item col">
+            <a th:href="@{/users}" class="nav-link">Users</a>
+        </li>
+        <li class="nav-item col">   
+            <a th:href="@{/transaction}" class="nav-link">Transaction Details</a>
+        </li>
+        <li class="nav-item col">
+            <a th:href="@{/transfer1}" class="nav-link">Transfer</a>
+        </li>
+    </ul>
+    </div>
+</nav>
+<div class="container">
+   <div class="row">
+    <div class="col-lg-6 col-sm-6 col-md-6 justify-content-center card mx-auto mt-3 shadow">
+        <h4 class="card-header text-center">Create a Bank Account</h4>
+        <div class="card-body">
+        <form th:action="@{/users}" method="post" th:object="${bank}" enctype="multipart/form-data">
+            Name:
+            <div class="form-floating mb-3 ">
+                <input type="text" id="Name" name="Name" th:field="*{Name}" class="form-control" placeholder="Enter Name">
+                <label for="Name">Enter Name</label>
+            </div>
+            Age:
+            <div class="form-floating mb-3">
+                <input type="number" id="age" name="age" th:field="*{age}" class="form-control" placeholder="Enter Age">
+                <label for="age">Enter Age</label>
+            </div>
+            Select Gender:
+            <select class="form-select mb-3" name="gender" th:field="*{gender}" style="border-width: 2px;">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+            Deposit:
+            <div class="form-floating mb-3 ">
+                <input type="number" id="balance" name="balance" th:field="*{balance}" class="form-control" placeholder="Enter Deposit Amount">
+                <label for="balance">Enter Deposit</label>
+            </div>
+            Aadhar:
+            <div class="form-floating mb-3 ">
+                <input type="number" id="aadhar" name="aadhar" th:field="*{aadhar}" class="form-control" placeholder="Enter Aadhar">
+                <label for="aadhar">Enter Aadhar</label>
+            </div>
+            Choose Photo:
+            <input type="file" id="image1" name="image1" class="form-control mb-3" placeholder="Photo" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required="required">
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    </div>
+   </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
